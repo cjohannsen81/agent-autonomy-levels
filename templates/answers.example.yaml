@@ -1,0 +1,12 @@
+# Scoring worksheet answers (FRAMEWORK.md section 5). Each value is 0, 1 or 2.
+# Run: python tools/score.py templates/answers.example.yaml
+use_case: support-triage-agent/ticket-updates
+answers:
+  Q1: 1   # reversible with effort
+  Q2: 1   # internal data
+  Q3: 1   # one team
+  Q4: 0   # not regulated
+  Q5: 1   # external replies reviewed first
+  Q6: 1   # two systems
+  Q7: 0   # does not act on people
+  Q8: 1   # some experience

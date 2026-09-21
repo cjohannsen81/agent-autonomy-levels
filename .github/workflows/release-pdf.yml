@@ -1,0 +1,32 @@
+# Builds FRAMEWORK.pdf and attaches it to a GitHub release when a tag like v0.1.0 is pushed.
+name: release-pdf
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  pdf:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Drop the duplicate H1 (the title comes from the front matter)
+        run: sed '0,/^# Autonomy Levels/{/^# Autonomy Levels/d}' FRAMEWORK.md > build.md
+      - name: Build PDF
+        uses: docker://pandoc/extra:3.5
+        with:
+          args: >-
+            build.md
+            --output=autonomy-levels-${{ github.ref_name }}.pdf
+            --pdf-engine=xelatex
+            --variable=geometry:margin=2cm
+            --variable=fontsize:10pt
+            --variable=colorlinks:true
+      - name: Create release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: autonomy-levels-${{ github.ref_name }}.pdf
+          generate_release_notes: true

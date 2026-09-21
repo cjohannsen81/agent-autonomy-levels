@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/cjohannsen81/autonomy-levels/templates/certificate.schema.json",
+  "title": "Autonomy certificate",
+  "description": "One certificate per agent use case. See FRAMEWORK.md section 7.",
+  "type": "object",
+  "required": ["framework_version", "certificate", "level", "max_level", "score", "scope", "controls", "issued", "expires", "reviewer"],
+  "additionalProperties": false,
+  "properties": {
+    "framework_version": {"type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$"},
+    "certificate": {"type": "string", "description": "agent/use-case identifier"},
+    "level": {"$ref": "#/$defs/level"},
+    "max_level": {"$ref": "#/$defs/level"},
+    "score": {"type": "integer", "minimum": 0, "maximum": 16},
+    "scope": {
+      "type": "object",
+      "required": ["identity", "domains"],
+      "additionalProperties": false,
+      "properties": {
+        "identity": {"type": "string"},
+        "domains": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+        "writes": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "controls": {
+      "type": "object",
+      "required": ["in_place"],
+      "additionalProperties": false,
+      "properties": {
+        "in_place": {"type": "array", "items": {"$ref": "#/$defs/control"}, "uniqueItems": true},
+        "enforcement": {"type": "string", "description": "enforcement layer, e.g. aggrete 0.11"},
+        "policy": {"type": "string"},
+        "verification_report": {"type": "string"},
+        "approvals_owner": {"type": "string"}
+      }
+    },
+    "evidence": {"type": "array", "items": {"type": "string"}},
+    "issued": {"type": "string", "format": "date"},
+    "expires": {"type": "string", "format": "date"},
+    "reviewer": {"type": "string"},
+    "demotion_triggers": {
+      "type": "array",
+      "items": {"enum": ["audit_integrity_failure", "tool_change", "refusal_spike", "incident", "certificate_expired"]}
+    }
+  },
+  "$defs": {
+    "level": {"enum": ["L1", "L2", "L3", "L4", "L5"]},
+    "control": {"type": "string", "pattern": "^AL-(0[1-9]|1[0-6])$"}
+  }
+}

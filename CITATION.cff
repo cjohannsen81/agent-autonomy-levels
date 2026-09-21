@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: "If you use this framework, please cite it as below."
+title: "Autonomy Levels for Governed AI Agents"
+version: 0.1.0
+date-released: 2026-09-21
+license: CC-BY-4.0
+repository-code: "https://github.com/cjohannsen81/autonomy-levels"
+authors:
+  - family-names: Johannsen
+    given-names: Christian
+keywords:
+  - AI agents
+  - autonomy
+  - AI governance
+  - OWASP Agentic Top 10
+  - ISO/IEC 42001

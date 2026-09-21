@@ -1,0 +1,24 @@
+# Example autonomy certificate (fictional organization).
+# Validate with: python tools/validate.py templates/certificate.example.yaml
+framework_version: 0.1.0
+certificate: support-triage-agent/ticket-updates
+level: L4
+max_level: L4                 # from tools/score.py
+score: 6
+scope:
+  identity: svc-triage-agent@example.com
+  domains: [ticketing-support, kb-public]
+  writes: [ticketing__create_comment, ticketing__update_status]
+controls:
+  in_place: [AL-01, AL-02, AL-03, AL-04, AL-06, AL-07, AL-08, AL-09, AL-10, AL-11, AL-12, AL-13]
+  enforcement: aggrete 0.11
+  policy: policies/support-triage.L4.yaml
+  verification_report: reports/conformance-2026-10-02.md
+  approvals_owner: support-lead@example.com
+evidence:
+  - reports/red-team-2026-10-02.md
+  - reports/alert-review-2026-09-30.md
+issued: 2026-10-05
+expires: 2027-01-05
+reviewer: security-architecture@example.com
+demotion_triggers: [audit_integrity_failure, tool_change, refusal_spike, incident, certificate_expired]

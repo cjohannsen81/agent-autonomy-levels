@@ -1,0 +1,7 @@
+# GitHub Pages (Settings > Pages > Deploy from branch: main, / root).
+title: Autonomy Levels for Governed AI Agents
+description: Levels, required controls, and promotion criteria for AI agents
+theme: jekyll-theme-minimal
+exclude:
+  - tools
+  - "*.py"
