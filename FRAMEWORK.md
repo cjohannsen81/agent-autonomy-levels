@@ -12,6 +12,20 @@ date: "2026-09-21"
 
 A framework for deciding how much autonomy an AI agent gets for a given use case, which controls must be in place at each level, and what evidence earns promotion to the next level.
 
+## Introduction: an old principle
+
+The idea behind this framework is older than generative AI. After losing to Deep Blue in 1997, Garry Kasparov proposed playing with the machine instead of against it. The first "Advanced Chess" match, Kasparov against Veselin Topalov, each with a PC at hand, took place in León, Spain, in June 1998 and ended 3–3 [7][8]. In the freestyle tournaments that followed, a human-computer team was called a centaur [8].
+
+The 2005 freestyle tournament on Playchess.com was won not by a grandmaster with a state-of-the-art machine but by two American amateurs running three computers at once. Kasparov's conclusion:
+
+> Weak human + machine + better process was superior to a strong computer alone and, more remarkably, superior to a strong human + machine + inferior process. [7]
+
+The term reached knowledge work through the 2023 Harvard/BCG field experiment with 758 consultants, which described Centaurs, who divide tasks between themselves and the AI, and Cyborgs, who interleave their work with it [9]. The study in section 1 builds on that experiment [1]. The autonomy levels used here come from a separate line of work that does not draw on chess [3]; the two meet in the question of how work is divided between human and machine.
+
+**Is the principle still valid?** In chess, only in part. By 2013 observers already saw the centaur's edge over engines alone disappearing [10], and engines have grown far stronger since. What aged is the claim that a human must stay in every loop. What held is the claim about process. The 2023 experiment found the same pattern in knowledge work: on tasks within the AI's capabilities, consultants using it completed 12.2% more tasks, 25.1% faster and with more than 40% higher quality; on a task outside them, they were 19 percentage points less likely to reach a correct answer [9]. The tool was the same in both cases. The difference lay in how it was used.
+
+This framework reads both results the same way. As machines improve, less human involvement per action is needed, which is why the levels run up to L5. What does not become optional is the process that decides how much involvement a use case needs and checks that the decision holds. Here, that process is the controls (section 4), the scoring (section 5) and the promotion and demotion rules (section 6).
+
 ## 1. Why this exists
 
 A field study of 244 Boston Consulting Group consultants found three ways professionals work with generative AI: Centaurs keep control of both what to do and how; Cyborgs decide what to do and let the AI shape how; Self-Automators hand both to the AI [1]. Self-Automators were 27% of participants. They finished fastest and produced the weakest work, and gained neither domain nor AI expertise [1][2].
@@ -157,3 +171,7 @@ Feedback via GitHub issues is welcome.
 4. OWASP GenAI Security Project. *OWASP Top 10 for Agentic Applications 2026.* https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/
 5. Auth0. *Lessons from OWASP Top 10 for Agentic Applications.* https://auth0.com/blog/owasp-top-10-agentic-applications-lessons/
 6. ISO/IEC 42001:2023, Annex A. Control list as summarized at https://mindsetcyber.com.au/iso-42001-controls-list/
+7. Kasparov. *The Chess Master and the Computer.* The New York Review of Books, 11 February 2010. https://www.nybooks.com/articles/2010/02/11/the-chess-master-and-the-computer/
+8. Wikipedia. *Advanced chess.* https://en.wikipedia.org/wiki/Advanced_chess
+9. Dell'Acqua, McFowland, Mollick, Lifshitz-Assaf, Kellogg, Rajendran, Krayer, Candelon, Lakhani. *Navigating the Jagged Technological Frontier: Field Experimental Evidence of the Effects of AI on Knowledge Worker Productivity and Quality.* Harvard Business School Working Paper 24-013, 2023. https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4573321
+10. Cowen. *What are humans still good for? The turning point in Freestyle chess may be approaching.* Marginal Revolution, November 2013. https://marginalrevolution.com/marginalrevolution/2013/11/what-are-humans-still-good-for-the-turning-point-in-freestyle-chess-may-be-approaching.html

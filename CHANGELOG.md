@@ -2,6 +2,10 @@
 
 This project uses semantic versioning. Changes to level definitions or control IDs are major; new controls or mappings are minor; wording and corrections are patch.
 
+## Unreleased
+
+- Introduction on the origin of the centaur principle (Kasparov's Advanced Chess, 1998) and whether it still holds
+
 ## 0.1.0 (2026-09-21)
 
 Initial draft.
