@@ -1,8 +1,8 @@
 cff-version: 1.2.0
 message: "If you use this framework, please cite it as below."
 title: "Autonomy Levels for Governed AI Agents"
-version: 0.1.0
-date-released: 2026-09-21
+version: 0.1.1
+date-released: 2026-09-22
 license: CC-BY-4.0
 repository-code: "https://github.com/cjohannsen81/agent-autonomy-levels"
 authors:

@@ -10,6 +10,14 @@ This framework answers that per use case, in three parts:
 
 Read the framework: **[FRAMEWORK.md](FRAMEWORK.md)** (a PDF is attached to each [release](../../releases)).
 
+## An old principle
+
+The idea is older than generative AI. In 2005, a freestyle chess tournament open to any mix of humans and computers was won not by a grandmaster with the best hardware but by two amateurs running three engines. Garry Kasparov's conclusion:
+
+> Weak human + machine + better process was superior to a strong computer alone and, more remarkably, superior to a strong human + machine + inferior process.
+
+Chess engines have since outgrown the need for a human partner; the point about process has not aged. As machines improve, less human involvement per action is needed, which is why the levels go up to L5. What stays mandatory is the process that decides how much involvement each use case needs and checks that the decision holds. Here, that process is the controls, the scoring and the promotion rules. The [introduction](FRAMEWORK.md#introduction-an-old-principle) traces the idea from Kasparov's Advanced Chess (1998) to the 2023 Harvard/BCG field experiment with 758 consultants.
+
 ## At a glance
 
 | Level | Human role | Agent may | Key controls added |
@@ -43,7 +51,7 @@ python tools/validate.py templates/certificate.example.yaml
 
 ## Status
 
-Version 0.1.0 is a draft for feedback. Thresholds, promotion windows and mappings are starting values. Open an issue with deployment experience, disagreements or mapping corrections.
+Version 0.1.1 is a draft for feedback. Thresholds, promotion windows and mappings are starting values. Open an issue with deployment experience, disagreements or mapping corrections.
 
 ## Implementations
 
@@ -53,7 +61,7 @@ The framework is vendor-neutral: any gateway or agent platform that enforces the
 
 See [CITATION.cff](CITATION.cff), or cite as:
 
-> Johannsen, C. (2026). *Autonomy Levels for Governed AI Agents* (Version 0.1.0). https://github.com/cjohannsen81/agent-autonomy-levels
+> Johannsen, C. (2026). *Autonomy Levels for Governed AI Agents* (Version 0.1.1). https://github.com/cjohannsen81/agent-autonomy-levels
 
 ## License
 

@@ -2,13 +2,13 @@
 title: "Autonomy Levels for Governed AI Agents"
 subtitle: "Levels, required controls, and promotion criteria"
 author: "Christian Johannsen"
-version: "0.1.0"
-date: "2026-09-21"
+version: "0.1.1"
+date: "2026-09-22"
 ---
 
 # Autonomy Levels for Governed AI Agents
 
-**Version 0.1.0 (draft), 2026-09-21.** Licensed under CC BY 4.0.
+**Version 0.1.1 (draft), 2026-09-22.** Licensed under CC BY 4.0.
 
 A framework for deciding how much autonomy an AI agent gets for a given use case, which controls must be in place at each level, and what evidence earns promotion to the next level.
 
