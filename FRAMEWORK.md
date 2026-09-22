@@ -129,6 +129,48 @@ Every use case starts at L1 or L2, whatever its maximum.
 
 Feng et al. propose autonomy certificates for governing agents [3]. This framework defines a minimal machine-readable form, one per use case, with a JSON Schema in `templates/certificate.schema.json` and an example in `templates/certificate.example.yaml`. A certificate records the level, the score behind the maximum level, the scope (identity, data domains, write tools), the controls in place, the evidence, the reviewer and an expiry date.
 
+### Example
+
+A support team runs an agent that reads incoming tickets and the public knowledge base, then comments on tickets and moves them between statuses. Its certificate:
+
+```yaml
+framework_version: 0.1.1
+certificate: support-triage-agent/ticket-updates
+level: L4
+max_level: L4                 # from tools/score.py
+score: 6
+scope:
+  identity: svc-triage-agent@example.com
+  domains: [ticketing-support, kb-public]
+  writes: [ticketing__create_comment, ticketing__update_status]
+controls:
+  in_place: [AL-01, AL-02, AL-03, AL-04, AL-06, AL-07, AL-08, AL-09, AL-10, AL-11, AL-12, AL-13]
+  enforcement: aggrete 0.11
+  policy: policies/support-triage.L4.yaml
+  verification_report: reports/conformance-2026-10-02.md
+  approvals_owner: support-lead@example.com
+evidence:
+  - reports/red-team-2026-10-02.md
+  - reports/alert-review-2026-09-30.md
+issued: 2026-10-05
+expires: 2027-01-05
+reviewer: security-architecture@example.com
+demotion_triggers: [audit_integrity_failure, tool_change, refusal_spike, incident, certificate_expired]
+```
+
+Reading it top to bottom:
+
+- **`certificate`** names the agent and the use case. The same agent handling payroll queries would need a second certificate with its own score and level (principle 3).
+- **`score` and `max_level`** come from the worksheet in section 5. The team scored 6: actions reversible with effort (Q1 = 1), internal data (Q2 = 1), blast radius of one team (Q3 = 1), not regulated (Q4 = 0), external replies reviewed before sending (Q5 = 1), two systems (Q6 = 1), no actions on people (Q7 = 0), some operating experience (Q8 = 1). A score of 4 to 6 caps the use case at L4. The worksheet answers are in `templates/answers.example.yaml`.
+- **`level`** is the level actually granted. It may be lower than `max_level`, never higher. Here the use case has been promoted to its maximum after starting at L2 (section 6).
+- **`scope`** is what the enforcement layer allows: one non-shared identity (AL-01), two data domains (AL-04) and exactly two write tools. Any other write is refused. At L1 the `writes` list must be empty (AL-05).
+- **`controls.in_place`** lists twelve controls. L4 requires AL-01 to AL-13 except AL-05, which applies at L1 only; AL-14 to AL-16 are L5 controls and are not required yet. `enforcement` names the layer that enforces them (principle 5), `policy` the rule file it runs, and `verification_report` the automated test run showing the controls hold. `approvals_owner` is the person whose approval AL-11 records for high-risk actions.
+- **`evidence`** points at the artifacts that justified promotion to L4: the red-team exercise against ASI01 to ASI03 and the review of alerts from the 30 days at L2 and L3.
+- **`issued`, `expires`, `reviewer`** make the certificate an accountable, time-boxed decision. This one is valid for three months. When it expires, the last demotion trigger fires and the agent drops a level until renewed.
+- **`demotion_triggers`** lists the signals from section 6 that the monitoring layer watches for this use case.
+
+`tools/validate.py` checks the certificate against the schema and then against the framework rules: the level does not exceed the maximum, every control required at the level is in place, the expiry is after the issue date, and L1 lists no write tools. Removing AL-11 from the list above, for example, fails validation with `controls required at L4 but not in place: AL-11`.
+
 ## 8. Mapping to ISO/IEC 42001
 
 Evidence produced at each level supports these Annex A controls of ISO/IEC 42001:2023 [6]. The mapping is indicative: Annex A controls are selected through a Statement of Applicability, and this framework covers runtime operation, not the full AI management system.
