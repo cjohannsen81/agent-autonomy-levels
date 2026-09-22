@@ -4,47 +4,163 @@
   "title": "Autonomy certificate",
   "description": "One certificate per agent use case. See FRAMEWORK.md section 7.",
   "type": "object",
-  "required": ["framework_version", "certificate", "level", "max_level", "score", "scope", "controls", "issued", "expires", "reviewer"],
+  "required": [
+    "framework_version",
+    "certificate",
+    "level",
+    "max_level",
+    "score",
+    "owner",
+    "scope",
+    "controls",
+    "issued",
+    "expires",
+    "reviewer"
+  ],
   "additionalProperties": false,
   "properties": {
-    "framework_version": {"type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$"},
-    "certificate": {"type": "string", "description": "agent/use-case identifier"},
-    "level": {"$ref": "#/$defs/level"},
-    "max_level": {"$ref": "#/$defs/level"},
-    "score": {"type": "integer", "minimum": 0, "maximum": 16},
+    "framework_version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "certificate": {
+      "type": "string",
+      "description": "agent/use-case identifier"
+    },
+    "level": {
+      "$ref": "#/$defs/level"
+    },
+    "max_level": {
+      "$ref": "#/$defs/level"
+    },
+    "score": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 16
+    },
+    "owner": {
+      "type": "string",
+      "description": "person accountable for the use case"
+    },
     "scope": {
       "type": "object",
-      "required": ["identity", "domains"],
+      "required": [
+        "identity",
+        "domains"
+      ],
       "additionalProperties": false,
       "properties": {
-        "identity": {"type": "string"},
-        "domains": {"type": "array", "items": {"type": "string"}, "minItems": 1},
-        "writes": {"type": "array", "items": {"type": "string"}}
+        "identity": {
+          "type": "string"
+        },
+        "domains": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        },
+        "writes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
       }
     },
     "controls": {
       "type": "object",
-      "required": ["in_place"],
+      "required": [
+        "in_place"
+      ],
       "additionalProperties": false,
       "properties": {
-        "in_place": {"type": "array", "items": {"$ref": "#/$defs/control"}, "uniqueItems": true},
-        "enforcement": {"type": "string", "description": "enforcement layer, e.g. aggrete 0.11"},
-        "policy": {"type": "string"},
-        "verification_report": {"type": "string"},
-        "approvals_owner": {"type": "string"}
+        "in_place": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/control"
+          },
+          "uniqueItems": true
+        },
+        "enforcement": {
+          "type": "string",
+          "description": "enforcement layer, e.g. aggrete 0.11"
+        },
+        "policy": {
+          "type": "string"
+        },
+        "verification_report": {
+          "type": "string"
+        },
+        "approvals_owner": {
+          "type": "string"
+        }
       }
     },
-    "evidence": {"type": "array", "items": {"type": "string"}},
-    "issued": {"type": "string", "format": "date"},
-    "expires": {"type": "string", "format": "date"},
-    "reviewer": {"type": "string"},
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "issued": {
+      "type": "string",
+      "format": "date"
+    },
+    "expires": {
+      "type": "string",
+      "format": "date"
+    },
+    "reviewer": {
+      "type": "string"
+    },
     "demotion_triggers": {
       "type": "array",
-      "items": {"enum": ["audit_integrity_failure", "tool_change", "refusal_spike", "incident", "certificate_expired"]}
+      "items": {
+        "enum": [
+          "audit_integrity_failure",
+          "tool_change",
+          "refusal_spike",
+          "incident",
+          "certificate_expired",
+          "material_change"
+        ]
+      }
+    },
+    "material_changes": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "model_version",
+          "new_tool",
+          "scope_widened",
+          "approval_gate_removed",
+          "policy_change",
+          "enforcement_layer_change"
+        ]
+      },
+      "uniqueItems": true,
+      "description": "changes that invalidate the certificate until re-issue (FRAMEWORK.md section 6)"
+    },
+    "retired": {
+      "type": "string",
+      "format": "date",
+      "description": "set when the use case is retired"
     }
   },
   "$defs": {
-    "level": {"enum": ["L1", "L2", "L3", "L4", "L5"]},
-    "control": {"type": "string", "pattern": "^AL-(0[1-9]|1[0-6])$"}
+    "level": {
+      "enum": [
+        "L1",
+        "L2",
+        "L3",
+        "L4",
+        "L5"
+      ]
+    },
+    "control": {
+      "type": "string",
+      "pattern": "^AL-(0[1-9]|1[0-7])$"
+    }
   }
 }

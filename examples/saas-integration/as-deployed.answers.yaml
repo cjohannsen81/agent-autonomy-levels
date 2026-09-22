@@ -1,0 +1,15 @@
+# A third-party chat vendor's integration holding an OAuth grant with organization-wide read access
+# to Accounts, Contacts, Cases and Opportunities in the CRM. This is the configuration that the
+# Salesloft Drift breach of August 2025 turned into an export of records from 700+ organizations.
+# Scored as deployed, it caps at L1, at which reads across the CRM are not permitted: the grant
+# has to be narrowed before any certificate can be issued.
+use_case: saas-integration/as-deployed
+answers:
+  Q1: 2   # exported data cannot be recalled
+  Q2: 2   # personal data of customers
+  Q3: 2   # every customer record in the organization
+  Q4: 1   # customer data, indirectly regulated
+  Q5: 2   # data flows directly to a third party
+  Q6: 2   # accounts, contacts, cases, opportunities, chat transcripts
+  Q7: 1   # acts on people indirectly through their records
+  Q8: 1

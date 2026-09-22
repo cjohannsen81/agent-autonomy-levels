@@ -21,10 +21,11 @@ Mechanisms refer to Aggrete 0.11. Check IDs (C01 to C16) refer to its conformanc
 | AL-13 Monitoring | `audit_forward:` (SIEM, OCSF), Prometheus, OTLP | C16 |
 | AL-14 Continuous verification | `aggrete conformance` in CI | all |
 | AL-15 Supply chain | Not yet: signed image with SBOM and provenance planned | gap |
-| AL-16 Revocation | `wall` with `blocked_users` | C12 |
+| AL-16 Revocation | `wall` with `blocked_users`; the 60-second target and token-family revocation need the IdP | C12 (partial) |
+| AL-17 Level integrity | Policy and credentials held by the proxy; the agent sees only tool results | not yet a check |
 
-**Coverage:** 13 of 16 controls have a conformance check; AL-05 and AL-12 are implemented without a dedicated check; AL-15 is open.
+**Coverage:** 13 of 17 controls have a conformance check; AL-05, AL-12 and AL-17 are implemented without a dedicated check; AL-15 is open; AL-16 meets the control only together with the IdP.
 
 ## Per-level policy starting points
 
-Suggested approach: one policy file per level (`coc.L1.yaml` to `coc.L5.yaml`), each enabling the rules for that level's controls, starting in `alert` mode and flipping to `deny` on promotion. Validate every file with `aggrete-lint` and its own allow and deny tests before use. Policy templates are not included in v0.1.
+Suggested approach: one policy file per level (`coc.L1.yaml` to `coc.L5.yaml`), each enabling the rules for that level's controls, starting in `alert` mode and flipping to `deny` on promotion. Validate every file with `aggrete-lint` and its own allow and deny tests before use. Policy templates are not included in v0.2.

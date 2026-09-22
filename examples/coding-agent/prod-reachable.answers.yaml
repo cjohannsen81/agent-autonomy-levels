@@ -1,0 +1,12 @@
+# The same agent when a production database credential is reachable from its environment.
+# Not certified: the answers show why the credential has to be removed first.
+use_case: coding-agent/prod-reachable
+answers:
+  Q1: 2   # a dropped production table is not reversible in effect
+  Q2: 1   # internal
+  Q3: 2   # customers, if production data is lost
+  Q4: 0
+  Q5: 0
+  Q6: 2   # repository, CI, production database, secrets store
+  Q7: 0
+  Q8: 1

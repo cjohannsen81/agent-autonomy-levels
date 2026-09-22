@@ -2,3 +2,5 @@ __pycache__/
 .pytest_cache/
 *.pdf
 _site/
+research_notes/
+reports/

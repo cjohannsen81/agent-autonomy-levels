@@ -1,0 +1,25 @@
+# SRE agent, diagnosis scope: reads across observability systems, posts findings, proposes a runbook step.
+framework_version: 0.2.0
+certificate: sre-agent/diagnosis
+level: L4
+max_level: L4
+score: 5
+owner: sre-lead@example.com
+scope:
+  identity: svc-sre-agent@example.com
+  domains: [logs, metrics, traces, deploy-history, incident-tracker]
+  writes: [incident__add_note, incident__propose_action]
+controls:
+  in_place: [AL-01, AL-02, AL-03, AL-04, AL-06, AL-07, AL-08, AL-09, AL-10, AL-11, AL-12, AL-13, AL-17]
+  enforcement: aggrete 0.11
+  policy: policies/sre-agent.diagnosis.yaml
+  verification_report: reports/sre-conformance-2026-10-01.md
+  approvals_owner: sre-lead@example.com
+evidence:
+  - reports/sre-alert-only-2026-09.md
+  - reports/sre-red-team-2026-09.md
+issued: 2026-10-01
+expires: 2027-01-01
+reviewer: security-architecture@example.com
+demotion_triggers: [audit_integrity_failure, tool_change, refusal_spike, incident, certificate_expired, material_change]
+material_changes: [model_version, new_tool, scope_widened, approval_gate_removed]

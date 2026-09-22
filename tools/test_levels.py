@@ -43,7 +43,8 @@ def test_invalid_answer_rejected():
 def test_required_controls_cumulative_and_l1_only_rule():
     assert "AL-05" in required_controls("L1")
     assert "AL-05" not in required_controls("L2")
-    assert len(required_controls("L5")) == 15
+    assert len(required_controls("L5")) == 16
+    assert "AL-17" in required_controls("L1")
     assert set(required_controls("L3")) < set(required_controls("L4"))
 
 
@@ -73,3 +74,25 @@ def test_l1_with_writes_fails():
     cert["level"] = "L1"
     cert["controls"]["in_place"] = required_controls("L1")
     assert any("AL-05" in e for e in check(cert))
+
+
+def test_validity_longer_than_twelve_months_fails():
+    cert = load_example()
+    cert["expires"] = "2028-01-05"
+    assert any("twelve months" in e for e in check(cert))
+
+
+def example_pairs():
+    for cert_path in sorted((ROOT / "examples").glob("*/*.certificate.yaml")):
+        answers_path = cert_path.with_name(cert_path.name.replace(".certificate.", ".answers."))
+        yield cert_path, answers_path
+
+
+@pytest.mark.parametrize("cert_path,answers_path", list(example_pairs()),
+                         ids=[str(c.relative_to(ROOT)) for c, _ in example_pairs()])
+def test_example_certificates_match_their_worksheets(cert_path, answers_path):
+    cert = _to_json(yaml.safe_load(cert_path.read_text()))
+    assert check(cert) == []
+    assert answers_path.exists(), f"missing {answers_path.name}"
+    score, level = max_level(yaml.safe_load(answers_path.read_text())["answers"])
+    assert (cert["score"], cert["max_level"]) == (score, level)

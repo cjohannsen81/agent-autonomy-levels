@@ -4,7 +4,7 @@
 Checks, beyond the JSON Schema:
   - level does not exceed max_level
   - every control required at the certified level is listed in controls.in_place
-  - expires is after issued
+  - expires is after issued and at most 12 months later
   - writes are empty at L1
 
 Usage: python tools/validate.py CERT.yaml [CERT.yaml ...]
@@ -48,8 +48,12 @@ def check(cert: dict) -> list[str]:
     missing = sorted(set(required_controls(cert["level"])) - set(cert["controls"]["in_place"]))
     if missing:
         errors.append(f"controls required at {cert['level']} but not in place: {', '.join(missing)}")
-    if dt.date.fromisoformat(cert["expires"]) <= dt.date.fromisoformat(cert["issued"]):
+    issued = dt.date.fromisoformat(cert["issued"])
+    expires = dt.date.fromisoformat(cert["expires"])
+    if expires <= issued:
         errors.append("expires must be after issued")
+    elif expires > issued.replace(year=issued.year + 1):
+        errors.append("certificates are valid for at most twelve months")
     if cert["level"] == "L1" and cert["scope"].get("writes"):
         errors.append("L1 certificates may not list write tools (AL-05)")
     return errors

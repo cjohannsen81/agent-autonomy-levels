@@ -1,0 +1,25 @@
+# Third-party chat integration, narrowed scope. The vendor's identity has a short-lived token bound
+# to this scope; a revocation drill is part of the evidence because the incident showed it matters.
+framework_version: 0.2.0
+certificate: saas-integration/narrowed
+level: L3
+max_level: L3
+score: 8
+owner: marketing-ops-lead@example.com
+scope:
+  identity: svc-chat-vendor@example.com
+  domains: [crm-contacts-lookup, crm-leads]
+  writes: [crm__create_lead_allowlisted_fields]
+controls:
+  in_place: [AL-01, AL-02, AL-03, AL-04, AL-06, AL-07, AL-08, AL-09, AL-10, AL-13, AL-16, AL-17]
+  enforcement: aggrete 0.11
+  policy: policies/chat-vendor.narrowed.yaml
+  verification_report: reports/chat-vendor-conformance-2026-10-01.md
+evidence:
+  - reports/chat-vendor-aggregation-limits-2026-09.md
+  - reports/chat-vendor-revocation-drill-2026-09-20.md
+issued: 2026-10-01
+expires: 2027-01-01
+reviewer: security-architecture@example.com
+demotion_triggers: [audit_integrity_failure, tool_change, refusal_spike, incident, certificate_expired, material_change]
+material_changes: [scope_widened, new_tool, enforcement_layer_change]

@@ -1,0 +1,11 @@
+# Customer support agent answering order and product questions directly to customers.
+use_case: support-agent/informational
+answers:
+  Q1: 1   # a wrong answer can be corrected, but the customer already read it
+  Q2: 2   # customer records
+  Q3: 0   # one customer per conversation
+  Q4: 0
+  Q5: 2   # replies go straight to the customer
+  Q6: 1   # ticketing and order system
+  Q7: 0
+  Q8: 0   # the team has run an assistant for over a year

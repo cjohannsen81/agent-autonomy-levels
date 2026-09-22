@@ -1,0 +1,11 @@
+# Incident remediation: restart, scale or roll back a production service.
+use_case: sre-agent/remediation
+answers:
+  Q1: 1   # a restart can be undone, but users felt the interruption
+  Q2: 1
+  Q3: 2   # a wrong action in production reaches customers
+  Q4: 0
+  Q5: 0
+  Q6: 2
+  Q7: 0
+  Q8: 1

@@ -1,0 +1,11 @@
+# Incident diagnosis: read logs, metrics, traces and recent changes; post findings to the incident.
+use_case: sre-agent/diagnosis
+answers:
+  Q1: 0   # reads and incident notes
+  Q2: 1   # logs and configuration, internal
+  Q3: 1   # one on-call team acts on the findings
+  Q4: 0
+  Q5: 0
+  Q6: 2   # logs, metrics, traces, deploy history, configuration
+  Q7: 0
+  Q8: 1

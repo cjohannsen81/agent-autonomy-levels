@@ -1,0 +1,25 @@
+# Coding agent in a sandbox: edit files, run tests, push to a branch. No production reachable.
+framework_version: 0.2.0
+certificate: coding-agent/sandbox
+level: L4
+max_level: L4
+score: 4
+owner: platform-lead@example.com
+scope:
+  identity: svc-coding-agent@example.com
+  domains: [repo-app, ci]
+  writes: [fs__write_within_workspace, git__commit_branch, git__push_branch, ci__run_tests]
+controls:
+  in_place: [AL-01, AL-02, AL-03, AL-04, AL-06, AL-07, AL-08, AL-09, AL-10, AL-11, AL-12, AL-13, AL-14, AL-17]
+  enforcement: harness permission mode plus gateway
+  policy: policies/coding-agent.sandbox.yaml
+  verification_report: reports/coding-agent-conformance-2026-10-01.md
+  approvals_owner: platform-lead@example.com
+evidence:
+  - reports/coding-agent-30-days-alert-only.md
+  - reports/coding-agent-injection-eval-2026-09.md
+issued: 2026-10-01
+expires: 2027-04-01
+reviewer: security-architecture@example.com
+demotion_triggers: [audit_integrity_failure, tool_change, refusal_spike, incident, certificate_expired, material_change]
+material_changes: [model_version, new_tool, scope_widened, approval_gate_removed]

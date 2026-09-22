@@ -1,0 +1,11 @@
+# The same agent issuing refunds.
+use_case: support-agent/refunds
+answers:
+  Q1: 1   # money can be re-collected only with the customer's consent
+  Q2: 2
+  Q3: 0   # one order per action, with an amount cap
+  Q4: 1   # payments, indirectly regulated
+  Q5: 2
+  Q6: 2   # ticketing, orders, payments
+  Q7: 0
+  Q8: 0

@@ -1,0 +1,11 @@
+# Coding agent working in a sandboxed checkout with no production credentials.
+use_case: coding-agent/sandbox
+answers:
+  Q1: 0   # workspace is a disposable checkout with snapshot restore
+  Q2: 1   # source code and test data, internal
+  Q3: 1   # one team's repository
+  Q4: 0   # not regulated
+  Q5: 0   # changes reach others only through a reviewed pull request
+  Q6: 1   # repository and CI
+  Q7: 0   # does not act on people
+  Q8: 1   # team has run the agent for a few months

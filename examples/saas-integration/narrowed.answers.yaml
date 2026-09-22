@@ -1,0 +1,12 @@
+# The same integration narrowed to what the use case needs: look up one contact by e-mail,
+# create a lead with an allowlisted set of fields.
+use_case: saas-integration/narrowed
+answers:
+  Q1: 1   # a wrong lead can be deleted, but it may already have been worked
+  Q2: 2   # still personal data
+  Q3: 0   # one record per action
+  Q4: 1
+  Q5: 1   # the vendor sees only the fields the policy allows
+  Q6: 1   # chat and CRM
+  Q7: 1
+  Q8: 1
