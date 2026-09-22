@@ -51,7 +51,7 @@ python tools/validate.py templates/certificate.example.yaml
 
 ## Status
 
-Version 0.1.1 is a draft for feedback. Thresholds, promotion windows and mappings are starting values. Open an issue with deployment experience, disagreements or mapping corrections.
+Version 0.1.2 is a draft for feedback. Thresholds, promotion windows and mappings are starting values. Open an issue with deployment experience, disagreements or mapping corrections.
 
 ## Implementations
 
@@ -61,7 +61,7 @@ The framework is vendor-neutral: any gateway or agent platform that enforces the
 
 See [CITATION.cff](CITATION.cff), or cite as:
 
-> Johannsen, C. (2026). *Autonomy Levels for Governed AI Agents* (Version 0.1.1). https://github.com/cjohannsen81/agent-autonomy-levels
+> Johannsen, C. (2026). *Autonomy Levels for Governed AI Agents* (Version 0.1.2). https://github.com/cjohannsen81/agent-autonomy-levels
 
 ## License
 

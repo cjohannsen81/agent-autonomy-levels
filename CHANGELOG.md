@@ -2,7 +2,7 @@
 
 This project uses semantic versioning. Changes to level definitions or control IDs are major; new controls or mappings are minor; wording and corrections are patch.
 
-## Unreleased
+## 0.1.2 (2026-09-22)
 
 - Worked example of an autonomy certificate in section 7
 

@@ -1,6 +1,6 @@
 # Example autonomy certificate (fictional organization).
 # Validate with: python tools/validate.py templates/certificate.example.yaml
-framework_version: 0.1.1
+framework_version: 0.1.2
 certificate: support-triage-agent/ticket-updates
 level: L4
 max_level: L4                 # from tools/score.py

@@ -2,13 +2,13 @@
 title: "Autonomy Levels for Governed AI Agents"
 subtitle: "Levels, required controls, and promotion criteria"
 author: "Christian Johannsen"
-version: "0.1.1"
+version: "0.1.2"
 date: "2026-09-22"
 ---
 
 # Autonomy Levels for Governed AI Agents
 
-**Version 0.1.1 (draft), 2026-09-22.** Licensed under CC BY 4.0.
+**Version 0.1.2 (draft), 2026-09-22.** Licensed under CC BY 4.0.
 
 A framework for deciding how much autonomy an AI agent gets for a given use case, which controls must be in place at each level, and what evidence earns promotion to the next level.
 
@@ -134,7 +134,7 @@ Feng et al. propose autonomy certificates for governing agents [3]. This framewo
 A support team runs an agent that reads incoming tickets and the public knowledge base, then comments on tickets and moves them between statuses. Its certificate:
 
 ```yaml
-framework_version: 0.1.1
+framework_version: 0.1.2
 certificate: support-triage-agent/ticket-updates
 level: L4
 max_level: L4                 # from tools/score.py
