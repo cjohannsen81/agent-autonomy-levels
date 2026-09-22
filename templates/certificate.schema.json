@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/cjohannsen81/autonomy-levels/templates/certificate.schema.json",
+  "$id": "https://github.com/cjohannsen81/agent-autonomy-levels/templates/certificate.schema.json",
   "title": "Autonomy certificate",
   "description": "One certificate per agent use case. See FRAMEWORK.md section 7.",
   "type": "object",

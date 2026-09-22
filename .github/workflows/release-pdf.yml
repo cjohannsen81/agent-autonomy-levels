@@ -20,7 +20,7 @@ jobs:
         with:
           args: >-
             build.md
-            --output=autonomy-levels-${{ github.ref_name }}.pdf
+            --output=agent-autonomy-levels-${{ github.ref_name }}.pdf
             --pdf-engine=xelatex
             --variable=geometry:margin=2cm
             --variable=fontsize:10pt
@@ -28,5 +28,5 @@ jobs:
       - name: Create release
         uses: softprops/action-gh-release@v2
         with:
-          files: autonomy-levels-${{ github.ref_name }}.pdf
+          files: agent-autonomy-levels-${{ github.ref_name }}.pdf
           generate_release_notes: true

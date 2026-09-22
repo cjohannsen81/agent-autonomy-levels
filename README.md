@@ -53,7 +53,7 @@ The framework is vendor-neutral: any gateway or agent platform that enforces the
 
 See [CITATION.cff](CITATION.cff), or cite as:
 
-> Johannsen, C. (2026). *Autonomy Levels for Governed AI Agents* (Version 0.1.0). https://github.com/cjohannsen81/autonomy-levels
+> Johannsen, C. (2026). *Autonomy Levels for Governed AI Agents* (Version 0.1.0). https://github.com/cjohannsen81/agent-autonomy-levels
 
 ## License
 
